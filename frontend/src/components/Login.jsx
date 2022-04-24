@@ -29,7 +29,8 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="Login">
+      <h1>login</h1>
       <form onSubmit={handleLogin}>
         <label htmlFor="username">
           <input
@@ -39,6 +40,7 @@ const Login = () => {
             placeholder="username"
             onChange={handleChange}
             value={user.credentials.username}
+            autoComplete="off"
           />
         </label>
         <label htmlFor="password">
@@ -51,7 +53,9 @@ const Login = () => {
             value={user.credentials.password}
           />
         </label>
-        <div onClick={handleHiddenPassword}>{hidden ? "●" : "○"}</div>
+        <div id="hideBtn" onClick={handleHiddenPassword}>
+          {hidden ? "●" : "○"}
+        </div>
         <button id="submit">submit</button>
       </form>
     </div>
