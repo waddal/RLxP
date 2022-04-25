@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [hidden, setHidden] = useState(true);
   const [user, setUser] = useState({
     credentials: {
@@ -22,6 +25,18 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     console.log("logging in with: ", user.credentials);
+    axios
+      .post("endpoint/here", user.credentials)
+      .then((res) => {
+        console.log(res);
+        // localStorage.setItem('token', res.data.token);
+        navigate("/user");
+      })
+      .catch((err) => {
+        console.log(err);
+        //implement validation, user should be routed to signup if credentials are new/unlisted
+        navigate("/user");
+      });
   };
 
   const handleHiddenPassword = () => {
@@ -51,6 +66,7 @@ const Login = () => {
             placeholder="password"
             onChange={handleChange}
             value={user.credentials.password}
+            autoComplete="off"
           />
         </label>
         <div id="hideBtn" onClick={handleHiddenPassword}>
