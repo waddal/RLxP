@@ -1,13 +1,13 @@
 const dummyData = [
   {
-    username: "testUser1",
-    password: "testPass1",
-    email: "testUser1@email.com",
+    username: "koala01",
+    password: "koalaPass01",
+    email: "koala01@email.com",
   },
   {
-    username: "testUser2",
-    password: "testPass2",
-    email: "testUser2@email.com",
+    username: "bonobo01",
+    password: "bonoboPass01",
+    email: "bonobo01@email.com",
   },
 ];
 

@@ -9,7 +9,17 @@
     "migrate": "npx knex --knexfile config/knexfile.js migrate:latest",
     "rollback": "npx knex --knexfile config/knexfile.js migrate:rollback",
     "seed": "npx knex --knexfile config/knexfile.js seed:run",
-    "update": "npx knex --knexfile config/knexfile.js migrate:rollback && npx knex --knexfile config/knexfile.js migrate:latest && npx knex --knexfile config/knexfile.js seed:run"
+    "update": "npx knex --knexfile config/knexfile.js migrate:rollback && npx knex --knexfile config/knexfile.js migrate:latest && npx knex --knexfile config/knexfile.js seed:run",
+    "migrate:prod": "heroku run knex migrate:latest -a rlxp",
+    "rollback:prod": "heroku run knex migrate:rollback -a rlxp",
+    "database:prod": "heroku pg:psql -a rlxp",
+    "seed:prod": "heroku run knex seed:run -a rlxp",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "deploy": "git push heroku main"
+  },
+  "engines": {
+    "npm": "8.1.2",
+    "node": "16.13.0"
   },
   "keywords": [],
   "author": "",
