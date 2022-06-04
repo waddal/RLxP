@@ -10,23 +10,23 @@ const handleError = require("./middleware/handleError");
 //ROUTERS
 const usersRouter = require("./users/usersRouter");
 
-const app = express();
+const server = express();
 
-app.use(express.json());
-app.use(cors({ origin: "*" }));
-app.use("/users", usersRouter);
+server.use(express.json());
+server.use(cors({ origin: "*" }));
+server.use("/users", usersRouter);
 
 //GLOBAL ENDPOINT
-app.get("*", (req, res, next) => {
+server.get("*", (req, res, next) => {
   res.json(`\nserver is running on ${process.env.PORT}\n`);
 });
 
 //ERROR HANDLERS
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+server.use(function (req, res, next) {
   next(createError(404));
 });
 
-app.use(handleError);
+server.use(handleError);
 
-module.exports = app;
+module.exports = server;
