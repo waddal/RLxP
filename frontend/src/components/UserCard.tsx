@@ -16,6 +16,7 @@ function UserCard() {
             </TotalLevel>
           </Badge>
         </PublicInfo>
+
         <PrivateInfo>
           <SkillsContainer>
             <h2>Skills</h2>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Login = () => {
     },
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setUser({
       ...user,
       credentials: {
@@ -22,7 +23,7 @@ const Login = () => {
     });
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = (e: any) => {
     e.preventDefault();
     console.log("logging in with: ", user.credentials);
     axios
@@ -44,7 +45,7 @@ const Login = () => {
   };
 
   return (
-    <div className="Login">
+    <StyledLogin>
       <h1>login</h1>
       <form onSubmit={handleLogin}>
         <label htmlFor="username">
@@ -74,8 +75,34 @@ const Login = () => {
         </div>
         <button id="submit">submit</button>
       </form>
-    </div>
+    </StyledLogin>
   );
 };
 
 export default Login;
+
+const StyledLogin = styled.div`
+  form {
+    margin: 10px;
+  }
+
+  input {
+    outline: none;
+    border: 1px solid black;
+    text-indent: 2px;
+  }
+
+  #submit {
+    border: 1px solid #212121;
+    padding: 2px 6px;
+
+    &:hover {
+      border: 1px solid black;
+      background-color: azure;
+    }
+  }
+
+  #hideBtn {
+    cursor: default;
+  }
+`;

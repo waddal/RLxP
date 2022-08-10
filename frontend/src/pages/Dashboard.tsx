@@ -1,7 +1,7 @@
 import React from "react";
 import UserCard from "../components/UserCard";
 
-const UserPage = () => {
+const Dashboard = () => {
   return (
     <div>
       <UserCard />
@@ -9,4 +9,4 @@ const UserPage = () => {
   );
 };
 
-export default UserPage;
+export default Dashboard;
